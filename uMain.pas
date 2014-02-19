@@ -7,7 +7,7 @@ uses
   Dialogs, IdBaseComponent, IdComponent,
   IdTCPConnection, IdTCPClient, IdHTTP, StdCtrls, ExtCtrls, JPEG ,Gifimg,
   IdCookieManager, IdCookie, IdIOHandler, IdIOHandlerSocket,
-  IdIOHandlerStack, Buttons, PropStorageEh, pngimage;
+  IdIOHandlerStack, Buttons, PropStorageEh, pngimage, IdSSL, IdSSLOpenSSL;
 
 type
   TfrmMain = class(TForm)
@@ -33,12 +33,17 @@ type
     Label10: TLabel;
     Label11: TLabel;
     RegPropStorageManEh1: TRegPropStorageManEh;
+    Memo1: TMemo;
+    Button1: TButton;
+    IdCookieManager1: TIdCookieManager;
+    IdSSLIOHandlerSocketOpenSSL1: TIdSSLIOHandlerSocketOpenSSL;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure EditCapthKeyPress(Sender: TObject; var Key: Char);
     procedure Label11DblClick(Sender: TObject);
     procedure EditPhoneKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -53,6 +58,20 @@ implementation
 uses uRecentNumber;
 
 {$R *.dfm}
+
+procedure TfrmMain.Button1Click(Sender: TObject);
+var
+  PostData: TStringList;
+  PageData: TStringList;
+begin
+  PostData := TStringList.Create;
+  PageData := TStringList.Create;
+
+  IdHTTP1.Post('https://mobile.beeline.kz/ru/almaty/sms/', PostData);
+
+  PostData.Free;
+  PageData.Free;
+end;
 
 procedure TfrmMain.EditCapthKeyPress(Sender: TObject; var Key: Char);
 begin
@@ -81,7 +100,7 @@ end;
 procedure TfrmMain.SpeedButton1Click(Sender: TObject);
 var List: TStringList;
     Stream: TMemoryStream;
-    JPEG: TPngImage;
+    gif:  TgifImage;
     S : String ;
 begin
   List:=TStringList.Create;
@@ -97,13 +116,13 @@ begin
   Stream:=TMemoryStream.Create;
   IdHTTP1.Get(EditURL.Text,Stream); //грузим капчу в поток.
   Stream.Position:=0; //устанавливаем ОБЯЗАТЕЛЬНО на ноль
-  Stream.SaveToFile('D:\as.jpg');
-  exit;
-  JPEG:=TPngImage.Create;   //создаем jpeg
-  JPEG.LoadFromStream(Stream);//загружаем данные из потока
-  ImageCaptcha.Picture.Assign(JPEG);//выводим в Image
+//  Stream.SaveToFile('D:\as.jpg');
+//  exit;
+  gif:=TgifImage.Create;
+  gif.LoadFromStream(Stream);
+  ImageCaptcha.Picture.Assign(gif);//выводим в Image
   List.Free ;
-  JPEG.Free ;
+  gif.Free ;
 end;
 
 
@@ -118,18 +137,18 @@ begin
  Data.Add('smsto='+EditPhone.Text); // номер
  Data.Add('dirtysmstext='+MemoSend.Text); //Текст СМС сообщения
  Data.Add('confirm_key=');
+ Data.Add('translit=on');
  Data.Add('confirmcode='+EditCapth.Text); //Код с картинки
- Data.Add('x=33');
+ Data.Add('x=42');
  Data.Add('y=11');
- try
-   IdHTTP1.Post('http://mobile.beeline.kz/ru/almaty/sms/send.wbp', Data);
- except on E : exception do
- begin
-  // если есть ошибки то енто ничего страшного)
-    MessageBox(Handle,'Попробуте пожалуйста еще раз нажать этот кнопка!!!)))','Ошибка',MB_ICONHAND) ;
-    exit ;
- end;
- end;
+// try
+  Memo1.Lines.Text := IdHTTP1.Post('https://mobile.beeline.kz/ru/almaty/sms/send.wbp', Data);
+// except on E : exception do
+// begin
+//    MessageBox(Handle,'Попробуте пожалуйста еще раз нажать этот кнопка!!!)))','Ошибка',MB_ICONHAND) ;
+//    exit ;
+// end;
+// end;
  FrmRecentNumber.addPhone(ComboCod.Items[ComboCod.ItemIndex],EditPhone.Text);
  EditPhone.Clear ;
  EditCapth.Clear ;

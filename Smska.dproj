@@ -20,8 +20,11 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_ExeOutput>Bin</DCC_ExeOutput>
+			<DCC_UsePackage>rtl;EhLibDataDrivers140;EhLib140;vcl;dbrtl;vcldb;dbxcds;dbexpress;DbxCommonDriver;vclx;vcldbx;bdertl;adortl;vclib;ibxpress;vclimg;kbmMemRunD2009Std;Rave77VCL;vclactnband;vcltouch;xmlrtl;dsnap;dsnapcon;TeeUI;TeeDB;Tee;IndyCore;IndySystem;IndyProtocols;inet;intrawebdb_100_140;Intraweb_100_140;VclSmp;vclie;websnap;webdsnap;inetdb;inetdbbde;inetdbxpress;soaprtl;vclribbon;DataSnapIndy10ServerTransport;DataSnapProviderClient;DbxClientDriver;DataSnapServer;DBXInterBaseDriver;DBXMySQLDriver;DBXFirebirdDriver;DBXSybaseASEDriver;DBXSybaseASADriver;DBXOracleDriver;DBXMSSQLDriver;DBXInformixDriver;DBXDb2Driver;frxBDE14;frxADO14;fs14;frx14;frxcs14;fsDB14;frxDB14;fsBDE14;fsADO14;fsIBX14;frxIBX14;frxDBX14;frxe14;fsTee14;frxTee14;dxCoreD14;cxLibraryD14;cxEditorsD14;cxExtEditorsD14;dxDockingD14;dxsbD14;dxComnD14;dxBarD14;dxBarDBNavD14;cxBarEditItemD14;dxBarExtDBItemsD14;dxBarExtItemsD14;dxRibbonD14;cxPageControlD14;cxGridD14;dxLayoutControlD14;dxLayoutControlcxEditAdaptersD14;cxSpreadSheetD14;cxTreeListD14;cxTreeListdxBarPopupMenuD14;cxVerticalGridD14;dxFlowChartD14;dxorgcD14;dxdborD14;dxmdsD14;dxdbtrD14;dxtrmdD14;dxPSCoreD14;dxPSLnksD14;vclshlctrls;dxPScxCommonD14;dxPScxExtCommonD14;dxPScxPCProdD14;dxPScxSSLnkD14;dxPScxTL5LnkD14;dxPScxVGridLnkD14;dxPSTeeChartD14;dxPSDBTeeChartD14;dxPSdxDBTVLnkD14;dxPSdxFCLnkD14;dxPSdxLCLnkD14;dxPSdxOCLnkD14;dxPSdxDBOCLnkD14;dxPsPrVwAdvD14;dxPScxGrid6LnkD14;cxPivotGridD14;cxPivotGridChartD14;dcldxSkinsCoreD14;dxSkinsCoreD14;dxSkinscxPCPainterD14;dxSkinsdxLCPainterD14;dxSkinscxScheduler3PainterD14;cxSchedulerD14;dxSkinsdxNavBar2PainterD14;dxNavBarD14;dxSkinsdxDLPainterD14;dxSkinsdxRibbonPainterD14;dxSkinsdxBarPainterD14;dxSkinBlackD14;dxSkinBlueD14;dxSkinSilverD14;dxSkinStardustD14;dxSkinValentineD14;dxSkinXmas2008BlueD14;dxSkinCaramelD14;dxSkinCoffeeD14;dxSkinPumpkinD14;dxSkinDarkSideD14;dxSkinGlassOceansD14;dxSkiniMaginaryD14;dxSkinLilianD14;dxSkinMcSkinD14;dxSkinLiquidSkyD14;dxSkinLondonLiquidSkyD14;dxSkinMoneyTwinsD14;dxSkinOffice2007BlackD14;dxSkinOffice2007BlueD14;dxSkinOffice2007GreenD14;dxSkinOffice2007PinkD14;dxSkinOffice2007SilverD14;dxSkinSummer2008D14;dxSkinSpringTimeD14;dxSkinSevenD14;dxSkinFoggyD14;dxSkinDarkRoomD14;dxSkinSharpD14;dxSpellCheckerD14;dacvcl140;dac140;odacvcl140;odac140;oraprov140;CRControls140;CrossTabLib;AlphaDB2010;acnt2010_R;pc200r2010;pb200r2010;ps200r2010;cxPivotGridOLAPD14;fmLDAPAuth;ProgressIndicator;VirtualTreesR;mrim;ControlsCepEx;FIBPlus2010;FIBDBMidas2010</DCC_UsePackage>
+			<DCC_DcpOutput>DCP</DCC_DcpOutput>
 			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
-			<DCC_DependencyCheckOutputName>Smska.exe</DCC_DependencyCheckOutputName>
+			<DCC_DependencyCheckOutputName>Bin\Smska.exe</DCC_DependencyCheckOutputName>
 			<DCC_ImageBase>00400000</DCC_ImageBase>
 			<DCC_Platform>x86</DCC_Platform>
 		</PropertyGroup>
@@ -94,24 +97,7 @@
 						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
 						<VersionInfoKeys Name="Comments"/>
 					</VersionInfoKeys>
-					<Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\Public\Documents\RAD Studio\7.0\Bpl\dclcxEditorsD14.bpl">ExpressEditors Library 5 by Developer Express Inc.</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\Public\Documents\RAD Studio\7.0\Bpl\dclcxExtEditorsD14.bpl">ExpressExtendedEditors Library 5 by Developer Express Inc.</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\Public\Documents\RAD Studio\7.0\Bpl\dclcxGridD14.bpl">ExpressQuantumGrid 6 by Developer Express Inc.</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\Public\Documents\RAD Studio\7.0\Bpl\dclcxPivotGridD14.bpl">ExpressPivotGrid 2 (VCL Edition) by Developer Express Inc.</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\Public\Documents\RAD Studio\7.0\Bpl\dclcxPivotGridChartD14.bpl">ExpressPivotGrid 2 connection to ExpressQuantumGrid Chart View by Developer Express Inc.</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\Public\Documents\RAD Studio\7.0\Bpl\dclcxPivotGridOLAPD14.bpl">ExpressPivotGrid 2 OLAP by Developer Express Inc.</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\Public\Documents\RAD Studio\7.0\Bpl\dclcxTreeListD14.bpl">ExpressQuantumTreeList 5 by Developer Express Inc.</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\Public\Documents\RAD Studio\7.0\Bpl\dclcxSchedulerD14.bpl">ExpressScheduler 3 by Developer Express Inc.</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\Public\Documents\RAD Studio\7.0\Bpl\dclcxSchedulerGridD14.bpl">ExpressScheduler 3 connection to ExpressQuantumGrid by Developer Express Inc.</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\Public\Documents\RAD Studio\7.0\Bpl\dcldxSpellCheckerD14.bpl">ExpressSpellChecker by Developer Express Inc.</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\Public\Documents\RAD Studio\7.0\Bpl\dclcxVerticalGridD14.bpl">ExpressVerticalGrid by Developer Express Inc.</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\Public\Documents\RAD Studio\7.0\Bpl\dcldxPScxPivotGrid2LnkD14.bpl">ExpressPrinting System 4 ReportLink for ExpressPivotGrid 2 by Developer Express Inc.</Excluded_Packages>
-						<Excluded_Packages Name="$(BDS)\bin\bcboffice2k140.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
-						<Excluded_Packages Name="$(BDS)\bin\bcbofficexp140.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
-						<Excluded_Packages Name="$(BDS)\bin\dcloffice2k140.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-						<Excluded_Packages Name="$(BDS)\bin\dclofficexp140.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
-					</Excluded_Packages>
+					<Excluded_Packages/>
 					<Source>
 						<Source Name="MainSource">Smska.dpr</Source>
 					</Source>

@@ -4,7 +4,7 @@ object frmMain: TfrmMain
   BorderStyle = bsToolWindow
   Caption = #1054#1090#1087#1088#1072#1074#1080#1090#1100' '#1057#1052#1057#1082#1072' '#1085#1072' '#1041#1080#1083#1072#1081#1085
   ClientHeight = 403
-  ClientWidth = 281
+  ClientWidth = 736
   Color = clBtnHighlight
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -1210,9 +1210,9 @@ object frmMain: TfrmMain
   end
   object ImageCaptcha: TImage
     Left = 27
-    Top = 227
-    Width = 57
-    Height = 21
+    Top = 221
+    Width = 81
+    Height = 36
     AutoSize = True
     Center = True
     Transparent = True
@@ -1359,12 +1359,12 @@ object frmMain: TfrmMain
     TabOrder = 3
   end
   object EditCapth: TEdit
-    Left = 90
+    Left = 114
     Top = 227
-    Width = 96
+    Width = 72
     Height = 21
     Hint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1086#1084#1077#1088' '#1089' '#1082#1072#1088#1090#1080#1085#1082#1080
-    MaxLength = 4
+    MaxLength = 5
     NumbersOnly = True
     ParentShowHint = False
     ShowHint = True
@@ -1372,7 +1372,26 @@ object frmMain: TfrmMain
     TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1086#1084#1077#1088' '#1089' '#1082#1072#1088#1090#1080#1085#1082#1080
     OnKeyPress = EditCapthKeyPress
   end
+  object Memo1: TMemo
+    Left = 288
+    Top = 35
+    Width = 440
+    Height = 360
+    Lines.Strings = (
+      'Memo1')
+    TabOrder = 5
+  end
+  object Button1: TButton
+    Left = 288
+    Top = 8
+    Width = 75
+    Height = 25
+    Caption = 'Button1'
+    TabOrder = 6
+    OnClick = Button1Click
+  end
   object IdHTTP1: TIdHTTP
+    IOHandler = IdSSLIOHandlerSocketOpenSSL1
     AllowCookies = True
     ProxyParams.BasicAuthentication = False
     ProxyParams.ProxyPort = 0
@@ -1381,12 +1400,27 @@ object frmMain: TfrmMain
     Request.BasicAuthentication = False
     Request.UserAgent = 'Mozilla/3.0 (compatible; Indy Library)'
     HTTPOptions = [hoForceEncodeParams]
-    Left = 56
-    Top = 104
+    CookieManager = IdCookieManager1
+    Left = 360
+    Top = 64
   end
   object RegPropStorageManEh1: TRegPropStorageManEh
     Path = 'SMSKA'
-    Left = 96
-    Top = 120
+    Left = 560
+    Top = 240
+  end
+  object IdCookieManager1: TIdCookieManager
+    Left = 512
+    Top = 144
+  end
+  object IdSSLIOHandlerSocketOpenSSL1: TIdSSLIOHandlerSocketOpenSSL
+    MaxLineAction = maException
+    Port = 0
+    DefaultPort = 0
+    SSLOptions.Mode = sslmUnassigned
+    SSLOptions.VerifyMode = []
+    SSLOptions.VerifyDepth = 0
+    Left = 416
+    Top = 168
   end
 end
