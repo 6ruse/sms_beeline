@@ -142,7 +142,7 @@ begin
  Data.Add('x=42');
  Data.Add('y=11');
 // try
-  Memo1.Lines.Text := IdHTTP1.Post('https://mobile.beeline.kz/ru/almaty/sms/send.wbp', Data);
+  Memo1.Lines.Text := IdHTTP1.Post('http://mobile.beeline.kz/ru/almaty/sms/send.wbp', Data);
 // except on E : exception do
 // begin
 //    MessageBox(Handle,'Попробуте пожалуйста еще раз нажать этот кнопка!!!)))','Ошибка',MB_ICONHAND) ;
