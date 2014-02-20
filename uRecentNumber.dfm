@@ -46,7 +46,7 @@ object FrmRecentNumber: TFrmRecentNumber
       'GroupBox1.ListPhone.<P>.Items.Strings')
     AfterLoadProps = PropStorageEh1AfterLoadProps
     BeforeLoadProps = PropStorageEh1BeforeLoadProps
-    Left = 72
+    Left = 168
     Top = 40
   end
 end

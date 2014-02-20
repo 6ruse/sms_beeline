@@ -11,10 +11,7 @@ uses
 
 type
   TfrmMain = class(TForm)
-    EditURL: TEdit;
-    Label1: TLabel;
     IdHTTP1: TIdHTTP;
-    Image1: TImage;
     Label2: TLabel;
     Label4: TLabel;
     ComboCod: TComboBox;
@@ -33,8 +30,6 @@ type
     Label10: TLabel;
     Label11: TLabel;
     RegPropStorageManEh1: TRegPropStorageManEh;
-    Memo1: TMemo;
-    Button1: TButton;
     IdCookieManager1: TIdCookieManager;
     IdSSLIOHandlerSocketOpenSSL1: TIdSSLIOHandlerSocketOpenSSL;
     procedure SpeedButton1Click(Sender: TObject);
@@ -43,7 +38,6 @@ type
     procedure Label11DblClick(Sender: TObject);
     procedure EditPhoneKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -58,20 +52,6 @@ implementation
 uses uRecentNumber;
 
 {$R *.dfm}
-
-procedure TfrmMain.Button1Click(Sender: TObject);
-var
-  PostData: TStringList;
-  PageData: TStringList;
-begin
-  PostData := TStringList.Create;
-  PageData := TStringList.Create;
-
-  IdHTTP1.Post('https://mobile.beeline.kz/ru/almaty/sms/', PostData);
-
-  PostData.Free;
-  PageData.Free;
-end;
 
 procedure TfrmMain.EditCapthKeyPress(Sender: TObject; var Key: Char);
 begin
@@ -104,20 +84,9 @@ var List: TStringList;
     S : String ;
 begin
   List:=TStringList.Create;
-//  try
-//    List.Text:=IdHTTP1.Get(EditURL.Text);//получаем содержимое страницы в переменную
-//  except on E : Exception do
-//  begin
-//   если есть ошибки то енто ничего страшного)
-//    MessageBox(Handle,'Попробуте пожалуйста еще раз нажать этот кнопка!!!)))','Ошибка',MB_ICONHAND) ;
-//    exit ;
-//  end;
-//  end;
   Stream:=TMemoryStream.Create;
-  IdHTTP1.Get(EditURL.Text,Stream); //грузим капчу в поток.
-  Stream.Position:=0; //устанавливаем ОБЯЗАТЕЛЬНО на ноль
-//  Stream.SaveToFile('D:\as.jpg');
-//  exit;
+  IdHTTP1.Get('http://mobile.beeline.kz/ru/almaty/sms/mamimg.aspx',Stream); //грузим капчу.
+  Stream.Position:=0;
   gif:=TgifImage.Create;
   gif.LoadFromStream(Stream);
   ImageCaptcha.Picture.Assign(gif);//выводим в Image
@@ -127,32 +96,32 @@ end;
 
 
 procedure TfrmMain.SpeedButton2Click(Sender: TObject);
-var
-  Data:TStringList;
+  var
+    Data:TStringList;
 begin
- Data:=TStringList.Create;
- Data.Add('send=');
- Data.Add('smstext='+MemoSend.Text); //Текст СМС сообщения
- Data.Add('smstoprefix='+ComboCod.Items[ComboCod.ItemIndex]); //Префикс 940, 960, 970 и т.п.
- Data.Add('smsto='+EditPhone.Text); // номер
- Data.Add('dirtysmstext='+MemoSend.Text); //Текст СМС сообщения
- Data.Add('confirm_key=');
- Data.Add('translit=on');
- Data.Add('confirmcode='+EditCapth.Text); //Код с картинки
- Data.Add('x=42');
- Data.Add('y=11');
-// try
-  Memo1.Lines.Text := IdHTTP1.Post('http://mobile.beeline.kz/ru/almaty/sms/send.wbp', Data);
-// except on E : exception do
-// begin
-//    MessageBox(Handle,'Попробуте пожалуйста еще раз нажать этот кнопка!!!)))','Ошибка',MB_ICONHAND) ;
-//    exit ;
-// end;
-// end;
- FrmRecentNumber.addPhone(ComboCod.Items[ComboCod.ItemIndex],EditPhone.Text);
- EditPhone.Clear ;
- EditCapth.Clear ;
- MemoSend.Clear ;
+  Data:=TStringList.Create;
+  Data.Add('send=');
+  Data.Add('smstext='+MemoSend.Text); //Текст СМС сообщения
+  Data.Add('smstoprefix='+ComboCod.Items[ComboCod.ItemIndex]); //Префикс 940, 960, 970 и т.п.
+  Data.Add('smsto='+EditPhone.Text); // номер
+  Data.Add('dirtysmstext='+MemoSend.Text); //Текст СМС сообщения
+  Data.Add('confirm_key=');
+  Data.Add('translit=on');
+  Data.Add('confirmcode='+EditCapth.Text); //Код с картинки
+  Data.Add('x=42');
+  Data.Add('y=11');
+  try
+    IdHTTP1.Post('http://mobile.beeline.kz/ru/almaty/sms/send.wbp', Data);
+  except on E : exception do
+  begin
+    MessageBox(Handle,'Во время отправки сообщения возникла ошибка','Ошибка',MB_ICONHAND) ;
+    exit ;
+  end;
+  end;
+  FrmRecentNumber.addPhone(ComboCod.Items[ComboCod.ItemIndex],EditPhone.Text);
+  EditPhone.Clear ;
+  EditCapth.Clear ;
+  MemoSend.Clear ;
 end;
 
 end.
