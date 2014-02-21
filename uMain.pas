@@ -7,7 +7,8 @@ uses
   Dialogs, IdBaseComponent, IdComponent,
   IdTCPConnection, IdTCPClient, IdHTTP, StdCtrls, ExtCtrls, JPEG ,Gifimg,
   IdCookieManager, IdCookie, IdIOHandler, IdIOHandlerSocket,
-  IdIOHandlerStack, Buttons, PropStorageEh, pngimage, IdSSL, IdSSLOpenSSL;
+  IdIOHandlerStack, Buttons, PropStorageEh, pngimage, IdSSL, IdSSLOpenSSL,
+  PropFilerEh;
 
 type
   TfrmMain = class(TForm)
@@ -15,7 +16,6 @@ type
     Label2: TLabel;
     Label4: TLabel;
     ComboCod: TComboBox;
-    EditPhone: TEdit;
     Label5: TLabel;
     MemoSend: TMemo;
     Label6: TLabel;
@@ -24,19 +24,18 @@ type
     Label3: TLabel;
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
-    Label7: TLabel;
     Label8: TLabel;
-    Label9: TLabel;
-    Label10: TLabel;
-    Label11: TLabel;
     RegPropStorageManEh1: TRegPropStorageManEh;
     IdCookieManager1: TIdCookieManager;
     IdSSLIOHandlerSocketOpenSSL1: TIdSSLIOHandlerSocketOpenSSL;
+    CmbPhoneNumber: TComboBox;
+    PropStorageEh1: TPropStorageEh;
+    SpeedButton3: TSpeedButton;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure EditCapthKeyPress(Sender: TObject; var Key: Char);
-    procedure Label11DblClick(Sender: TObject);
-    procedure EditPhoneExit(Sender: TObject);
+    procedure CmbPhoneNumberExit(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -48,35 +47,18 @@ var
 
 implementation
 
-uses uRecentNumber;
-
 {$R *.dfm}
+
+procedure TfrmMain.CmbPhoneNumberExit(Sender: TObject);
+begin
+  if CmbPhoneNumber.Items.IndexOf(CmbPhoneNumber.Text) = -1 then
+    CmbPhoneNumber.Items.Add(CmbPhoneNumber.Text);
+end;
 
 procedure TfrmMain.EditCapthKeyPress(Sender: TObject; var Key: Char);
 begin
   if key = #13 then
     SpeedButton2Click(sender) ;
-end;
-
-procedure TfrmMain.EditPhoneExit(Sender: TObject);
-begin
-  FrmRecentNumber := TFrmRecentNumber.Create(Self);
-//  FrmRecentNumber.ShowModal;
-  FrmRecentNumber.addPhone(ComboCod.Items[ComboCod.ItemIndex],EditPhone.Text);
-  FrmRecentNumber.Free;
-end;
-
-procedure TfrmMain.Label11DblClick(Sender: TObject);
-begin
-  // покажем форму с выбором сохраненного номера
-  FrmRecentNumber := TFrmRecentNumber.Create(Self);
-  FrmRecentNumber.ShowModal ;
-  if frmRecentNumber.ModalResult = mrOk then
-  begin
-     ComboCod.ItemIndex := FrmRecentNumber.itemIndexCod ;
-     EditPhone.Text := FrmRecentNumber.phone;
-  end;
-  FrmRecentNumber.Free;
 end;
 
 procedure TfrmMain.SpeedButton1Click(Sender: TObject);
@@ -87,7 +69,11 @@ var List: TStringList;
 begin
   List:=TStringList.Create;
   Stream:=TMemoryStream.Create;
-  IdHTTP1.Get('http://mobile.beeline.kz/ru/almaty/sms/mamimg.aspx',Stream); //грузим капчу.
+  try
+    IdHTTP1.Get('http://mobile.beeline.kz/ru/almaty/sms/mamimg.aspx',Stream); //грузим капчу.
+  Except on E: Exception do
+    MessageBox(Handle,'Во время получения капчи возникла ошибка','Ошибка',MB_ICONHAND) ;
+  end;
   Stream.Position:=0;
   gif:=TgifImage.Create;
   gif.LoadFromStream(Stream);
@@ -105,7 +91,7 @@ begin
   Data.Add('send=');
   Data.Add('smstext='+MemoSend.Text); //Текст СМС сообщения
   Data.Add('smstoprefix='+ComboCod.Items[ComboCod.ItemIndex]); //Префикс 940, 960, 970 и т.п.
-  Data.Add('smsto='+EditPhone.Text); // номер
+  Data.Add('smsto='+CmbPhoneNumber.Text); // номер
   Data.Add('dirtysmstext='+MemoSend.Text); //Текст СМС сообщения
   Data.Add('confirm_key=');
   Data.Add('translit=on');
@@ -117,12 +103,15 @@ begin
   except on E : exception do
   begin
     MessageBox(Handle,'Во время отправки сообщения возникла ошибка','Ошибка',MB_ICONHAND) ;
-    exit ;
   end;
   end;
-  EditPhone.Clear ;
   EditCapth.Clear ;
   MemoSend.Clear ;
+end;
+
+procedure TfrmMain.SpeedButton3Click(Sender: TObject);
+begin
+  Close;
 end;
 
 end.

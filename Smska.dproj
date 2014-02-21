@@ -44,9 +44,6 @@
 			<DCCReference Include="uMain.pas">
 				<Form>frmMain</Form>
 			</DCCReference>
-			<DCCReference Include="uRecentNumber.pas">
-				<Form>FrmRecentNumber</Form>
-			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

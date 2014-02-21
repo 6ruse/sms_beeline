@@ -2,8 +2,7 @@ program Smska;
 
 uses
   Forms,
-  uMain in 'uMain.pas' {frmMain},
-  uRecentNumber in 'uRecentNumber.pas' {FrmRecentNumber};
+  uMain in 'uMain.pas' {frmMain};
 
 {$R *.res}
 

@@ -6,5 +6,7 @@
     <Transaction>2011.09.27 11:32:18.551.dproj,C:\Users\Novikov_BK.FERMAK\Documents\RAD Studio\Projects\Project1.dproj=D:\PROJECT\разный\отправитьСМС\Smska.dproj</Transaction>
     <Transaction>2011.09.27 16:23:06.745.pas,D:\PROJECT\разный\отправитьСМС\Unit2.pas=D:\PROJECT\разный\отправитьСМС\uRecentNumber.pas</Transaction>
     <Transaction>2011.09.27 16:23:06.745.dfm,D:\PROJECT\разный\отправитьСМС\Unit2.dfm=D:\PROJECT\разный\отправитьСМС\uRecentNumber.dfm</Transaction>
+    <Transaction>2014.02.21 15:03:16.839.pas,D:\PROJECT\sms_beeline\trunk\uRecentNumber.pas=</Transaction>
+    <Transaction>2014.02.21 15:03:16.840.dfm,D:\PROJECT\sms_beeline\trunk\uRecentNumber.dfm=</Transaction>
   </Transactions>
 </BorlandProject>

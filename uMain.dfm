@@ -1,10 +1,11 @@
 object frmMain: TfrmMain
   Left = 0
   Top = 0
-  BorderStyle = bsToolWindow
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
   Caption = #1054#1090#1087#1088#1072#1074#1080#1090#1100' '#1057#1052#1057' Beeline.kz'
-  ClientHeight = 351
-  ClientWidth = 296
+  ClientHeight = 331
+  ClientWidth = 311
   Color = clBtnHighlight
   Font.Charset = RUSSIAN_CHARSET
   Font.Color = clWindowText
@@ -69,7 +70,7 @@ object frmMain: TfrmMain
     Transparent = True
   end
   object Label3: TLabel
-    Left = 199
+    Left = 218
     Top = 230
     Width = 66
     Height = 15
@@ -77,9 +78,9 @@ object frmMain: TfrmMain
     Transparent = True
   end
   object SpeedButton1: TSpeedButton
-    Left = 34
+    Left = 23
     Top = 269
-    Width = 106
+    Width = 83
     Height = 30
     Hint = #1053#1072#1078#1084#1080#1090#1077' '#1076#1083#1103' '#1087#1086#1083#1091#1095#1077#1085#1080#1103' '#1082#1072#1088#1090#1080#1085#1082#1080'('#1082#1086#1076#1072') '#1076#1083#1103' '#1086#1090#1087#1088#1072#1074#1082#1080' '#1089#1084#1089' '#1089#1086#1086#1073#1097#1077#1085#1080#1103
     Caption = #1055#1086#1083#1091#1095#1080#1090#1100' '#1082#1086#1076
@@ -92,9 +93,9 @@ object frmMain: TfrmMain
     OnClick = SpeedButton1Click
   end
   object SpeedButton2: TSpeedButton
-    Left = 158
+    Left = 112
     Top = 269
-    Width = 106
+    Width = 83
     Height = 30
     Hint = #1053#1072#1078#1084#1080#1090#1077' '#1076#1083#1103' '#1086#1090#1087#1088#1072#1074#1082#1080' '#1089#1084#1089' '#1089#1086#1086#1073#1097#1077#1085#1080#1103
     Caption = #1054#1090#1087#1088#1072#1074#1080#1090#1100
@@ -108,20 +109,15 @@ object frmMain: TfrmMain
     ShowHint = True
     OnClick = SpeedButton2Click
   end
-  object Label7: TLabel
-    Left = 8
-    Top = 312
-    Width = 102
-    Height = 15
-    Caption = #1055#1086' '#1074#1089#1077#1084' '#1074#1086#1087#1088#1086#1089#1072#1084
-  end
   object Label8: TLabel
-    Left = 116
-    Top = 313
-    Width = 78
+    Left = 0
+    Top = 318
+    Width = 311
     Height = 13
     Cursor = crHandPoint
     Hint = #1069#1083#1077#1082#1090#1088#1086#1085#1085#1099#1081' '#1072#1076#1088#1077#1089' '#1072#1074#1090#1086#1088#1072' '#1087#1088#1086#1075#1088#1072#1084#1084#1099
+    Align = alBottom
+    Alignment = taCenter
     Caption = 'koder@koder.kz'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlue
@@ -131,39 +127,26 @@ object frmMain: TfrmMain
     ParentFont = False
     ParentShowHint = False
     ShowHint = True
+    ExplicitLeft = 100
+    ExplicitTop = 330
+    ExplicitWidth = 78
   end
-  object Label9: TLabel
-    Left = 200
-    Top = 314
-    Width = 87
-    Height = 15
-    Caption = #1055#1054' '#1088#1072#1089#1087#1088#1086#1089#1090#1088#1072'-'
-  end
-  object Label10: TLabel
-    Left = 8
-    Top = 326
-    Width = 160
-    Height = 15
-    Caption = #1085#1103#1077#1090#1089#1103' '#1072#1073#1089#1086#1083#1102#1090#1085#1086' '#1073#1077#1089#1087#1083#1072#1090#1085#1086'.'
-  end
-  object Label11: TLabel
-    Left = 111
-    Top = 56
-    Width = 153
-    Height = 13
-    Cursor = crHandPoint
-    Hint = #1042#1099#1073#1088#1072#1090#1100' '#1080#1079' '#1089#1087#1080#1089#1082#1072' '#1087#1086#1089#1083#1077#1076#1085#1080#1077' '#1085#1072#1073#1088#1072#1085#1085#1099#1077' '#1085#1086#1084#1077#1088#1072' ('#1087#1086#1084#1085#1080#1084' 10 '#1085#1086#1084#1077#1088#1086#1074')'
-    Caption = #1055#1086#1089#1083#1077#1076#1085#1080#1077' '#1085#1072#1073#1088#1072#1085#1085#1099#1077' '#1085#1086#1084#1077#1088#1072
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clBlue
+  object SpeedButton3: TSpeedButton
+    Left = 201
+    Top = 269
+    Width = 83
+    Height = 30
+    Hint = #1053#1072#1078#1084#1080#1090#1077' '#1076#1083#1103' '#1086#1090#1087#1088#1072#1074#1082#1080' '#1089#1084#1089' '#1089#1086#1086#1073#1097#1077#1085#1080#1103
+    Caption = #1047#1072#1082#1088#1099#1090#1100
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
     Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = [fsUnderline]
+    Font.Name = 'Comic Sans MS'
+    Font.Style = [fsBold, fsUnderline]
     ParentFont = False
     ParentShowHint = False
     ShowHint = True
-    Transparent = True
-    OnClick = Label11DblClick
+    OnClick = SpeedButton3Click
   end
   object ComboCod: TComboBox
     Left = 54
@@ -179,31 +162,17 @@ object frmMain: TfrmMain
       '771'
       '777')
   end
-  object EditPhone: TEdit
-    Left = 126
-    Top = 35
-    Width = 138
-    Height = 23
-    Hint = #1053#1086#1084#1077#1088' '#1090#1077#1083#1077#1092#1086#1085#1072
-    MaxLength = 7
-    NumbersOnly = True
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 1
-    TextHint = #1053#1086#1084#1077#1088' '#1090#1077#1083#1077#1092#1086#1085#1072
-    OnExit = EditPhoneExit
-  end
   object MemoSend: TMemo
     Left = 34
     Top = 99
-    Width = 230
+    Width = 250
     Height = 86
     TabOrder = 2
   end
   object EditCapth: TEdit
     Left = 121
     Top = 227
-    Width = 72
+    Width = 91
     Height = 23
     Hint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1086#1084#1077#1088' '#1089' '#1082#1072#1088#1090#1080#1085#1082#1080
     MaxLength = 5
@@ -213,6 +182,14 @@ object frmMain: TfrmMain
     TabOrder = 3
     TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1086#1084#1077#1088' '#1089' '#1082#1072#1088#1090#1080#1085#1082#1080
     OnKeyPress = EditCapthKeyPress
+  end
+  object CmbPhoneNumber: TComboBox
+    Left = 126
+    Top = 35
+    Width = 158
+    Height = 23
+    TabOrder = 1
+    OnExit = CmbPhoneNumberExit
   end
   object IdHTTP1: TIdHTTP
     IOHandler = IdSSLIOHandlerSocketOpenSSL1
@@ -246,5 +223,14 @@ object frmMain: TfrmMain
     SSLOptions.VerifyDepth = 0
     Left = 72
     Top = 120
+  end
+  object PropStorageEh1: TPropStorageEh
+    Section = 'FrmReportSaldoLawyer'
+    StorageManager = RegPropStorageManEh1
+    StoredProps.Strings = (
+      'CmbPhoneNumber.<P>.ItemIndex'
+      'CmbPhoneNumber.<P>.Items')
+    Left = 204
+    Top = 96
   end
 end
