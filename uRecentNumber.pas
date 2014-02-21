@@ -12,8 +12,6 @@ type
     ListPhone: TListBox;
     PropStorageEh1: TPropStorageEh;
     procedure ListPhoneDblClick(Sender: TObject);
-    procedure PropStorageEh1BeforeLoadProps(Sender: TObject);
-    procedure PropStorageEh1AfterLoadProps(Sender: TObject);
   private
     { Private declarations }
     function getItemIndexCod: byte;
@@ -41,9 +39,21 @@ uses uMain;
 procedure TFrmRecentNumber.addPhone(cod, phone: string);
   var
     s : string ;
+    i : integer;
+    flag : Boolean ;
 begin
-  s := cod+phone ;
-  ListPhone.Items.Add(s) ;
+  s    := cod+phone ;
+//  flag := false;
+//  for I := 0 to ListPhone.Count - 1 do
+//  begin
+//    if ListPhone.Items[i] = s then
+//    begin
+//      flag := true;
+//      Break;
+//    end;
+//  end;
+//  if not flag then
+    ListPhone.Items.Add(s);
 end;
 
 function TFrmRecentNumber.getItemIndexCod: byte;
@@ -63,17 +73,6 @@ end;
 procedure TFrmRecentNumber.ListPhoneDblClick(Sender: TObject);
 begin
   FrmRecentNumber.ModalResult := MrOk ;
-end;
-
-procedure TFrmRecentNumber.PropStorageEh1AfterLoadProps(Sender: TObject);
-begin
-  ListPhone.Items.Add(OldItem) ;
-end;
-
-procedure TFrmRecentNumber.PropStorageEh1BeforeLoadProps(Sender: TObject);
-begin
-//  List.AddStrings(ListPhone.Items) ;
-  OldItem := ListPhone.Items[0] ;
 end;
 
 end.

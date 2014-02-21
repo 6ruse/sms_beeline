@@ -35,18 +35,17 @@ object FrmRecentNumber: TFrmRecentNumber
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      Sorted = True
       TabOrder = 0
       OnDblClick = ListPhoneDblClick
     end
   end
   object PropStorageEh1: TPropStorageEh
-    Section = 'Contakt'
+    Section = 'Contakts'
     StorageManager = frmMain.RegPropStorageManEh1
     StoredProps.Strings = (
-      'GroupBox1.ListPhone.<P>.Items.Strings')
-    AfterLoadProps = PropStorageEh1AfterLoadProps
-    BeforeLoadProps = PropStorageEh1BeforeLoadProps
-    Left = 168
-    Top = 40
+      'GroupBox1.ListPhone.<P>.Items')
+    Left = 144
+    Top = 24
   end
 end

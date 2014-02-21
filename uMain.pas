@@ -36,8 +36,7 @@ type
     procedure SpeedButton2Click(Sender: TObject);
     procedure EditCapthKeyPress(Sender: TObject; var Key: Char);
     procedure Label11DblClick(Sender: TObject);
-    procedure EditPhoneKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    procedure EditPhoneExit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -59,22 +58,25 @@ begin
     SpeedButton2Click(sender) ;
 end;
 
-procedure TfrmMain.EditPhoneKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
+procedure TfrmMain.EditPhoneExit(Sender: TObject);
 begin
-  if key = VK_RETURN then
-    FrmRecentNumber.addPhone(ComboCod.Items[ComboCod.ItemIndex],EditPhone.Text);
+  FrmRecentNumber := TFrmRecentNumber.Create(Self);
+//  FrmRecentNumber.ShowModal;
+  FrmRecentNumber.addPhone(ComboCod.Items[ComboCod.ItemIndex],EditPhone.Text);
+  FrmRecentNumber.Free;
 end;
 
 procedure TfrmMain.Label11DblClick(Sender: TObject);
 begin
   // покажем форму с выбором сохраненного номера
-  frmRecentNumber.ShowModal ;
+  FrmRecentNumber := TFrmRecentNumber.Create(Self);
+  FrmRecentNumber.ShowModal ;
   if frmRecentNumber.ModalResult = mrOk then
   begin
      ComboCod.ItemIndex := FrmRecentNumber.itemIndexCod ;
      EditPhone.Text := FrmRecentNumber.phone;
   end;
+  FrmRecentNumber.Free;
 end;
 
 procedure TfrmMain.SpeedButton1Click(Sender: TObject);
@@ -118,7 +120,6 @@ begin
     exit ;
   end;
   end;
-  FrmRecentNumber.addPhone(ComboCod.Items[ComboCod.ItemIndex],EditPhone.Text);
   EditPhone.Clear ;
   EditCapth.Clear ;
   MemoSend.Clear ;

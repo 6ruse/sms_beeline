@@ -147,13 +147,13 @@ object frmMain: TfrmMain
     Caption = #1085#1103#1077#1090#1089#1103' '#1072#1073#1089#1086#1083#1102#1090#1085#1086' '#1073#1077#1089#1087#1083#1072#1090#1085#1086'.'
   end
   object Label11: TLabel
-    Left = 46
-    Top = 59
-    Width = 218
+    Left = 111
+    Top = 56
+    Width = 153
     Height = 13
     Cursor = crHandPoint
     Hint = #1042#1099#1073#1088#1072#1090#1100' '#1080#1079' '#1089#1087#1080#1089#1082#1072' '#1087#1086#1089#1083#1077#1076#1085#1080#1077' '#1085#1072#1073#1088#1072#1085#1085#1099#1077' '#1085#1086#1084#1077#1088#1072' ('#1087#1086#1084#1085#1080#1084' 10 '#1085#1086#1084#1077#1088#1086#1074')'
-    Caption = #1055#1086#1089#1083#1077#1076#1085#1080#1077' '#1085#1072#1073#1088#1072#1085#1085#1099#1077' '#1085#1086#1084#1077#1088#1072'(10 '#1085#1086#1084#1077#1088#1086#1074')'
+    Caption = #1055#1086#1089#1083#1077#1076#1085#1080#1077' '#1085#1072#1073#1088#1072#1085#1085#1099#1077' '#1085#1086#1084#1077#1088#1072
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlue
     Font.Height = -11
@@ -163,7 +163,7 @@ object frmMain: TfrmMain
     ParentShowHint = False
     ShowHint = True
     Transparent = True
-    OnDblClick = Label11DblClick
+    OnClick = Label11DblClick
   end
   object ComboCod: TComboBox
     Left = 54
@@ -191,7 +191,7 @@ object frmMain: TfrmMain
     ShowHint = True
     TabOrder = 1
     TextHint = #1053#1086#1084#1077#1088' '#1090#1077#1083#1077#1092#1086#1085#1072
-    OnKeyDown = EditPhoneKeyDown
+    OnExit = EditPhoneExit
   end
   object MemoSend: TMemo
     Left = 34
