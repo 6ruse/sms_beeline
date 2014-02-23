@@ -4,8 +4,8 @@ object frmMain: TfrmMain
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1054#1090#1087#1088#1072#1074#1080#1090#1100' '#1057#1052#1057' Beeline.kz'
-  ClientHeight = 331
-  ClientWidth = 311
+  ClientHeight = 317
+  ClientWidth = 305
   Color = clBtnHighlight
   Font.Charset = RUSSIAN_CHARSET
   Font.Color = clWindowText
@@ -62,16 +62,19 @@ object frmMain: TfrmMain
   end
   object ImageCaptcha: TImage
     Left = 34
-    Top = 225
-    Width = 70
-    Height = 27
-    AutoSize = True
+    Top = 222
+    Width = 98
+    Height = 33
+    ParentCustomHint = False
     Center = True
-    Transparent = True
+    ParentShowHint = False
+    Proportional = True
+    ShowHint = False
+    Stretch = True
   end
   object Label3: TLabel
     Left = 218
-    Top = 230
+    Top = 233
     Width = 66
     Height = 15
     Caption = #1042#1074#1077#1076#1080#1090#1077' '#1082#1086#1076
@@ -79,7 +82,7 @@ object frmMain: TfrmMain
   end
   object SpeedButton1: TSpeedButton
     Left = 23
-    Top = 269
+    Top = 266
     Width = 83
     Height = 30
     Hint = #1053#1072#1078#1084#1080#1090#1077' '#1076#1083#1103' '#1087#1086#1083#1091#1095#1077#1085#1080#1103' '#1082#1072#1088#1090#1080#1085#1082#1080'('#1082#1086#1076#1072') '#1076#1083#1103' '#1086#1090#1087#1088#1072#1074#1082#1080' '#1089#1084#1089' '#1089#1086#1086#1073#1097#1077#1085#1080#1103
@@ -94,7 +97,7 @@ object frmMain: TfrmMain
   end
   object SpeedButton2: TSpeedButton
     Left = 112
-    Top = 269
+    Top = 266
     Width = 83
     Height = 30
     Hint = #1053#1072#1078#1084#1080#1090#1077' '#1076#1083#1103' '#1086#1090#1087#1088#1072#1074#1082#1080' '#1089#1084#1089' '#1089#1086#1086#1073#1097#1077#1085#1080#1103
@@ -111,8 +114,8 @@ object frmMain: TfrmMain
   end
   object Label8: TLabel
     Left = 0
-    Top = 318
-    Width = 311
+    Top = 304
+    Width = 305
     Height = 13
     Cursor = crHandPoint
     Hint = #1069#1083#1077#1082#1090#1088#1086#1085#1085#1099#1081' '#1072#1076#1088#1077#1089' '#1072#1074#1090#1086#1088#1072' '#1087#1088#1086#1075#1088#1072#1084#1084#1099
@@ -127,13 +130,12 @@ object frmMain: TfrmMain
     ParentFont = False
     ParentShowHint = False
     ShowHint = True
-    ExplicitLeft = 100
-    ExplicitTop = 330
-    ExplicitWidth = 78
+    OnClick = Label8Click
+    ExplicitTop = 302
   end
   object SpeedButton3: TSpeedButton
     Left = 201
-    Top = 269
+    Top = 266
     Width = 83
     Height = 30
     Hint = #1053#1072#1078#1084#1080#1090#1077' '#1076#1083#1103' '#1086#1090#1087#1088#1072#1074#1082#1080' '#1089#1084#1089' '#1089#1086#1086#1073#1097#1077#1085#1080#1103
@@ -170,9 +172,9 @@ object frmMain: TfrmMain
     TabOrder = 2
   end
   object EditCapth: TEdit
-    Left = 121
-    Top = 227
-    Width = 91
+    Left = 138
+    Top = 230
+    Width = 74
     Height = 23
     Hint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1086#1084#1077#1088' '#1089' '#1082#1072#1088#1090#1080#1085#1082#1080
     MaxLength = 5
@@ -188,8 +190,18 @@ object frmMain: TfrmMain
     Top = 35
     Width = 158
     Height = 23
+    MaxLength = 7
     TabOrder = 1
     OnExit = CmbPhoneNumberExit
+    OnKeyPress = CmbPhoneNumberKeyPress
+  end
+  object ChckTranslite: TCheckBox
+    Left = 34
+    Top = 185
+    Width = 107
+    Height = 17
+    Caption = #1090#1088#1072#1085#1089#1083#1080#1090#1077#1088#1072#1094#1080#1103
+    TabOrder = 4
   end
   object IdHTTP1: TIdHTTP
     IOHandler = IdSSLIOHandlerSocketOpenSSL1
@@ -202,17 +214,13 @@ object frmMain: TfrmMain
     Request.UserAgent = 'Mozilla/3.0 (compatible; Indy Library)'
     HTTPOptions = [hoForceEncodeParams]
     CookieManager = IdCookieManager1
-    Left = 32
-    Top = 104
   end
   object RegPropStorageManEh1: TRegPropStorageManEh
     Path = 'SMSKA'
-    Left = 128
-    Top = 80
+    Left = 64
   end
   object IdCookieManager1: TIdCookieManager
-    Left = 176
-    Top = 144
+    Left = 136
   end
   object IdSSLIOHandlerSocketOpenSSL1: TIdSSLIOHandlerSocketOpenSSL
     MaxLineAction = maException
@@ -221,8 +229,7 @@ object frmMain: TfrmMain
     SSLOptions.Mode = sslmUnassigned
     SSLOptions.VerifyMode = []
     SSLOptions.VerifyDepth = 0
-    Left = 72
-    Top = 120
+    Left = 32
   end
   object PropStorageEh1: TPropStorageEh
     Section = 'FrmReportSaldoLawyer'
@@ -230,7 +237,6 @@ object frmMain: TfrmMain
     StoredProps.Strings = (
       'CmbPhoneNumber.<P>.ItemIndex'
       'CmbPhoneNumber.<P>.Items')
-    Left = 204
-    Top = 96
+    Left = 100
   end
 end

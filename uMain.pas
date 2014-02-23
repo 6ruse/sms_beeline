@@ -8,7 +8,7 @@ uses
   IdTCPConnection, IdTCPClient, IdHTTP, StdCtrls, ExtCtrls, JPEG ,Gifimg,
   IdCookieManager, IdCookie, IdIOHandler, IdIOHandlerSocket,
   IdIOHandlerStack, Buttons, PropStorageEh, pngimage, IdSSL, IdSSLOpenSSL,
-  PropFilerEh;
+  PropFilerEh, ShellAPI;
 
 type
   TfrmMain = class(TForm)
@@ -31,11 +31,14 @@ type
     CmbPhoneNumber: TComboBox;
     PropStorageEh1: TPropStorageEh;
     SpeedButton3: TSpeedButton;
+    ChckTranslite: TCheckBox;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure EditCapthKeyPress(Sender: TObject; var Key: Char);
     procedure CmbPhoneNumberExit(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
+    procedure CmbPhoneNumberKeyPress(Sender: TObject; var Key: Char);
+    procedure Label8Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -55,10 +58,24 @@ begin
     CmbPhoneNumber.Items.Add(CmbPhoneNumber.Text);
 end;
 
+procedure TfrmMain.CmbPhoneNumberKeyPress(Sender: TObject; var Key: Char);
+begin
+  case key of
+    '0'..'9': ; // цифры
+    else
+      key := #0;
+  end; // case
+end;
+
 procedure TfrmMain.EditCapthKeyPress(Sender: TObject; var Key: Char);
 begin
   if key = #13 then
     SpeedButton2Click(sender) ;
+end;
+
+procedure TfrmMain.Label8Click(Sender: TObject);
+begin
+  ShellExecute(Application.Handle, nil, 'http://koder.kz/', nil, nil,SW_SHOWNOACTIVATE);
 end;
 
 procedure TfrmMain.SpeedButton1Click(Sender: TObject);
@@ -70,11 +87,13 @@ begin
   List:=TStringList.Create;
   Stream:=TMemoryStream.Create;
   try
+    IdHTTP1.Post('http://mobile.beeline.kz/ru/almaty/sms/send.wbp', List);
     IdHTTP1.Get('http://mobile.beeline.kz/ru/almaty/sms/mamimg.aspx',Stream); //грузим капчу.
   Except on E: Exception do
     MessageBox(Handle,'Во время получения капчи возникла ошибка','Ошибка',MB_ICONHAND) ;
   end;
   Stream.Position:=0;
+//  Stream.SaveToFile('D:\as.gif');
   gif:=TgifImage.Create;
   gif.LoadFromStream(Stream);
   ImageCaptcha.Picture.Assign(gif);//выводим в Image
@@ -94,16 +113,15 @@ begin
   Data.Add('smsto='+CmbPhoneNumber.Text); // номер
   Data.Add('dirtysmstext='+MemoSend.Text); //Текст СМС сообщения
   Data.Add('confirm_key=');
-  Data.Add('translit=on');
+  if ChckTranslite.Checked then
+    Data.Add('translit=on');
   Data.Add('confirmcode='+EditCapth.Text); //Код с картинки
-  Data.Add('x=42');
-  Data.Add('y=11');
+  Data.Add('x=0');
+  Data.Add('y=0');
   try
     IdHTTP1.Post('http://mobile.beeline.kz/ru/almaty/sms/send.wbp', Data);
   except on E : exception do
-  begin
     MessageBox(Handle,'Во время отправки сообщения возникла ошибка','Ошибка',MB_ICONHAND) ;
-  end;
   end;
   EditCapth.Clear ;
   MemoSend.Clear ;
